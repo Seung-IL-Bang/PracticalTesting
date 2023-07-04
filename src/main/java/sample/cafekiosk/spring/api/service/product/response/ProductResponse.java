@@ -2,9 +2,9 @@ package sample.cafekiosk.spring.api.service.product.response;
 
 import lombok.Builder;
 import lombok.Getter;
-import sample.cafekiosk.spring.product.Product;
-import sample.cafekiosk.spring.product.ProductSellingStatus;
-import sample.cafekiosk.spring.product.ProductType;
+import sample.cafekiosk.spring.domain.product.Product;
+import sample.cafekiosk.spring.domain.product.ProductSellingStatus;
+import sample.cafekiosk.spring.domain.product.ProductType;
 
 @Getter
 public class ProductResponse {
