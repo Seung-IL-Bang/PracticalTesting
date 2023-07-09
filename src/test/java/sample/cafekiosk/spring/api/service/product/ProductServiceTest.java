@@ -1,8 +1,6 @@
 package sample.cafekiosk.spring.api.service.product;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -34,6 +32,21 @@ class ProductServiceTest {
     @AfterEach
     void tearDown() {
         productRepository.deleteAllInBatch();
+    }
+
+    @BeforeAll
+    void beforeAll() {
+        // before class
+
+    }
+
+    @BeforeEach
+    void setUp() { // 지양하는 것이 좋다.
+        // before method
+
+        // 아래 두 조건을 만족 시 셋업을 사용해도 좋다.
+        // 1. 각 테스트 입장에서 봤을 때, 셋업 내용을 몰라도 각 테스트 내용을 이해하는 데 무리가 없는가?
+        // 2. 셋업 메소드를 수정해도 각 테스트에 영향이 없는가?
     }
 
     @DisplayName("신규 상품을 등록 시, 상품번호 중 가장 최근 번호에서 1 증가한 값이다.")

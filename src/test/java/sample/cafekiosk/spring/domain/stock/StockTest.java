@@ -10,6 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StockTest {
 
+    // 공유 자원 사용은 테스트 간의 독립성을 저해하므로 지양하는 것이 좋다.
+//    private static final Stock stock = Stock.create("001", 1);
+
+
     @DisplayName("재고의 수량이 제공된 수량보다 작은지 확인한다.")
     @Test
     void isQuantityLessThan() {
