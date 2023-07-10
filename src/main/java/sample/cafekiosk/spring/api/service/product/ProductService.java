@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductNumberFactory productNumberFactory;
 
 
     public List<ProductResponse> getSellingProducts() {
@@ -46,26 +47,12 @@ public class ProductService {
         // 001 002 003
         // DB 에서 마지막 저장된 Product 의 상품 번호를 읽어와서 +1
 
-        String nextProductNumber = createNextProductNumber();
+        String nextProductNumber = productNumberFactory.createNextProductNumber();
 
         Product product = request.toEntity(nextProductNumber);
         Product savedProduct = productRepository.save(product);
 
         return ProductResponse.of(product);
     }
-
-    private String createNextProductNumber() {
-        String latestProductNumber = productRepository.findLatestProduct();
-
-        if (latestProductNumber == null) {
-            return "001";
-        }
-
-        int latestProductNumberInt = Integer.parseInt(latestProductNumber);
-        int nextProductNumberInt = latestProductNumberInt + 1;
-
-        return String.format("%03d", nextProductNumberInt);
-    }
-
 
 }
