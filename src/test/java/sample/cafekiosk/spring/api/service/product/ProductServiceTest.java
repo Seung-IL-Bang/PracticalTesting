@@ -35,7 +35,7 @@ class ProductServiceTest {
     }
 
     @BeforeAll
-    void beforeAll() {
+    static void beforeAll() {
         // before class
 
     }
