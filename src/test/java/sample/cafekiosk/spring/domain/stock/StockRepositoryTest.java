@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.domain.product.Product;
 import java.util.List;
 
@@ -12,8 +16,10 @@ import static org.assertj.core.api.Assertions.tuple;
 import static org.junit.jupiter.api.Assertions.*;
 import static sample.cafekiosk.spring.domain.product.ProductSellingStatus.*;
 
-@DataJpaTest
-class StockRepositoryTest {
+//@ActiveProfiles("test")
+//@SpringBootTest // 선택사항 1
+//@DataJpaTest // 선택사항 2
+class StockRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private StockRepository stockRepository;

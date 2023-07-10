@@ -4,7 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.product.ProductRepository;
 import sample.cafekiosk.spring.domain.product.ProductSellingStatus;
@@ -17,9 +20,11 @@ import static org.assertj.core.api.Assertions.tuple;
 import static sample.cafekiosk.spring.domain.product.ProductSellingStatus.*;
 import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
-@ActiveProfiles("test")
-@DataJpaTest
-class ProductRepositoryTest {
+//@ActiveProfiles("test")
+//@SpringBootTest // 선택사항.1 -> 통합 환경 상속
+//@DataJpaTest // 선택사항.2 -> Jpa Bean 들만 불러오기 위한 개별 테스트 환경
+@Transactional // 통합 환경을 상속함으로써 DataJpaTest 가 빠지기 때문에 data Cleaning 을 위해 Transactional 추가
+class ProductRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;

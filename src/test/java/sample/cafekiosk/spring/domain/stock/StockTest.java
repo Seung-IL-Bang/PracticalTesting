@@ -1,9 +1,6 @@
 package sample.cafekiosk.spring.domain.stock;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestFactory;
+import org.junit.jupiter.api.*;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Collection;
@@ -65,6 +62,7 @@ class StockTest {
 
 
     // DynamicTest 기본 형태
+    @Disabled // 테스트 제외
     @DisplayName("")
     @TestFactory
     Collection<DynamicTest> dynamicTest() {
